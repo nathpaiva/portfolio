@@ -1,0 +1,81 @@
+/* Fonts
+-----------------------------*/
+@font-face
+{
+    font-family: 'Andika-Basic';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../font/andbasr-webfont.otf');
+    src: url('../font/andbasr-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/andbasr-webfont.woff') format('woff'),
+    url('../font/andbasr-webfont.ttf') format('truetype'),
+    url('../font/andbasr-webfont.svg#montserratregular') format('svg');
+}
+
+$font: 'Andika-Basic', Arial, Helvetica, sans-serif;
+// Colors
+$txt-color: #000; //Commom text color;
+$a-color: #4bba81; //Commom text color;
+// $a-color-hover: #37ac70; //Commom text color hover;
+$a-color-hover: #309a63; //Commom text color hover;
+$a-color-gray: #646566;
+
+$color-pink: #ef5b67;
+$color-purple: #6e2d56;
+$color-white: #fff;
+
+// The same color by tag "a" but oder name for not confuse the meaning in the context out of "a"
+$main-dark: $a-color;
+$main-color-light: $a-color-hover;
+$main-color-smooth: $a-color-gray;
+$default-button-bg: #fff;
+$default-button-bg-hover: #6e6e6e;
+$default-button-border: 1px solid #6e6e6e;
+$default-button-txt: #6e6e6e;
+$default-button-txt-hover: #fff;
+$page-title-txt: #ccc;
+$toolbar-btn-hover: #1fc4f4;
+
+// Breakpoint
+$bp-xxsmall: 319px;
+$bp-xsmall: 479px;
+$bp-small: 767px;
+$bp-medium: 1023px;
+$bp-large: 1389px;
+
+// Limit div
+%limit
+{
+    width: 960px;
+    margin: auto;
+    padding: 0 10px;
+    // @include bp(max-width, $bp-large)
+    // {
+    //     width: 100%;
+    //     &.mobile
+    //     {
+    //         padding: 0 20px;
+    //     }
+    // }
+}
+// inclue as imagens
+@import 'compass/utilities/sprites';
+@import 'compass/utilities/sprites/base';
+$icon-spacing: 20px;
+$icon-dimensions: true;
+$icon-layout: vertical;
+// @import 'icon/*.png';
+// @include all-icon-sprites(true);
+
+@mixin load-sprite($name-sprite)
+{
+    width: icon-sprite-width(#{$name-sprite});
+    height: icon-sprite-height(#{$name-sprite});
+
+    background: sprite($icon-sprites, #{$name-sprite});
+}
+@function em($target, $context)
+{
+    @return ($target / $context) * 1em;
+}

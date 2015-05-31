@@ -1,0 +1,100 @@
+/* BASIC CONFIGURATION
+----------------------------------------------------------*/
+
+/* Utilities
+-----------------------------*/
+%hide-text
+{
+    overflow: hidden;
+
+    text-indent: -999em;
+}
+
+%flex
+{
+    display: -webkit-flex;
+    display:         flex;
+}
+
+%disabled
+{
+    opacity: .5;
+}
+
+%button
+{
+    font-weight: bold;
+
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+
+    color: $default-button-txt;
+    border: $default-button-border;
+    background: $default-button-bg;
+    &.active,
+    &:active,
+    &:focus,
+    &:hover
+    {
+        transition: background-color .5s linear,
+        color .5s linear;
+
+        color: $default-button-txt-hover;
+        background-color: $default-button-bg-hover;
+    }
+}
+
+%clearfix
+{
+    display: block;
+    clear: both;
+
+    width: 0;
+    height: 0;
+
+    content: '';
+}
+
+/* General Styles
+-----------------------------*/
+body
+{
+    font-family: $font;
+    font-size: 62.5%;
+    // background-image: url('../images/bg-header.jpg');
+    // background-repeat: no-repeat;
+    // background-position: center top;
+
+
+    color: $txt-color;
+
+}
+
+a
+{
+    -webkit-transition: all .2s linear;
+       -moz-transition: all .2s linear;
+         -o-transition: all .2s linear;
+            transition: all .2s linear;
+    text-decoration: none;
+    word-wrap: break-word;
+
+    color: $a-color;
+    &:hover
+    {
+        -webkit-transition: all .2s linear;
+           -moz-transition: all .2s linear;
+             -o-transition: all .2s linear;
+                transition: all .2s linear;
+        text-decoration: none;
+        word-wrap: break-word;
+
+        color: $a-color-hover;
+    }
+    &:focus,
+    &:active
+    {
+        text-decoration: none;
+    }
+}
