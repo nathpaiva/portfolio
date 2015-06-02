@@ -25,6 +25,8 @@ header
             float: left;
             ul li
             {
+                display: inline-block;
+
                 margin: 0 0 0 15px;
                 &:first-child
                 {
@@ -141,10 +143,6 @@ header
                     }
                 }
             }
-        }
-        ul li
-        {
-            display: inline-block;
         }
     }
     &:after
