@@ -2,9 +2,9 @@ article{
 	@extend %limit;
 	.about{
 		width: 400px;
-		display: inline-block;
+		display: flex;
 	}
 	img{
-		float: right;
+		display: flex;
 	}
 }
