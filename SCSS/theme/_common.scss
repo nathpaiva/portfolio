@@ -62,25 +62,10 @@ $toolbar-btn-hover: #1fc4f4;
 // Breakpoint
 $bp-xxsmall: 319px;
 $bp-xsmall: 479px;
-$bp-small: 767px;
-$bp-medium: 1023px;
-$bp-large: 1389px;
+// $bp-small: 767px;
+// $bp-medium: 1023px;
+$bp-large: 960px;
 
-// Limit div
-%limit
-{
-    width: 960px;
-    margin: auto;
-    padding: 0 10px;
-    // @include bp(max-width, $bp-large)
-    // {
-    //     width: 100%;
-    //     &.mobile
-    //     {
-    //         padding: 0 20px;
-    //     }
-    // }
-}
 // inclue as imagens
 @import 'compass/utilities/sprites';
 @import 'compass/utilities/sprites/base';

@@ -1,10 +1,15 @@
-article{
-	@extend %limit;
-	.about{
-		width: 400px;
-		display: flex;
-	}
-	img{
-		display: flex;
-	}
+article
+{
+    @extend %limit;
+    @extend %flex;
+    .about
+    {
+        flex: 1;
+    }
+    .images
+    {
+        text-align: right;
+
+        flex: 1;
+    }
 }

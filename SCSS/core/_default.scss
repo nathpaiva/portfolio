@@ -12,13 +12,14 @@
 
 %flex
 {
-    display: -webkit-flex;
-    display:         flex;
+    @include display-flex;
+    @include flex-direction(row);
 }
 
 %disabled
 {
     opacity: .5;
+    filter: alpha(opacity=50);
 }
 
 %button
@@ -54,6 +55,19 @@
     height: 0;
 
     content: '';
+}
+
+// Limit element
+%limit
+{
+    width: 960px;
+    margin: auto;
+    padding: 0 10px;
+    @include bp(max-width, $bp-large)
+    {
+        width: 100%;
+        padding: 0 20px;
+    }
 }
 
 /* General Styles

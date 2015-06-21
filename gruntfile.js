@@ -2,7 +2,15 @@ module.exports = function (grunt) {
   'use strict';
   // Configurations
   grunt.initConfig({
-
+    watch: {
+      css: {
+        files: ['SCSS/*.scss', 'SCSS/**/*.scss'],
+        tasks: ['compass'],
+        options: {
+          livereload: true
+        }
+      }
+    },
     jshint: {
       files : 'js/*.js'
     },
@@ -14,36 +22,27 @@ module.exports = function (grunt) {
         }
       }
     },
-    copy: {
-      main: {
-        // src: ['css/*.css' , 'css/**/*.css']
-        // dest: 'V:/site/uolhost/css/',
-      }
-    },
-    watch: {
-      css: {
-        files: ['SCSS/*.scss', 'SCSS/**/*.scss'],
-        tasks: ['compass'],
+    browserSync: {
+      dev: {
+        bsFiles: {
+          src : [
+            'css/*.css',
+            '*.html'
+          ]
+        },
         options: {
-          livereload: true
+          watchTask: true,
+          proxy: "local.portfolio.com.br"
         }
       }
     }
   });
 
   // load tasks
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-browser-sync');
 
-  // verificar os JSs
-  grunt.registerTask('hint', ['jshint']);
-  // delivery QA
-  grunt.registerTask('bkpSTG', ['copy:mainSTG']);
-  // grunt.registerTask('bkp', ['copy:bkpQa']);
-  grunt.registerTask('delivery', ['copy:delivery']);
-
-
-  grunt.registerTask('w', ['watch']);
+  grunt.registerTask('w', ['browserSync', 'watch', 'jshint']);
 };
