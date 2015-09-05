@@ -4,45 +4,91 @@ module.exports = function (grunt) {
   grunt.initConfig({
     watch: {
       css: {
-        files: ['SCSS/*.scss', 'SCSS/**/*.scss'],
-        tasks: ['compass'],
+        files: ['scss/*.scss','scss/**/*.scss','images/icon/*'],
+        tasks: ['sass','css_sprite', 'autoprefixer'],
         options: {
           livereload: true
         }
+      },
+      gruntfile: {
+        files: ['./gruntfile.js'],
+        options: {
+          reload: true
+        }
       }
     },
-    jshint: {
-      files : 'js/*.js'
+    sass: {
+      options:{
+        sourcemap: 'file',
+        style: 'compressed'
+      },
+      files: {
+        expand: true,
+        cwd: 'scss/',
+        src: [
+        '**/*.scss'
+        ],
+        dest: 'assets/css',
+        ext: '.css',
+        extDot: 'last'
+      }
     },
-    compass: {
-      dist: {
-        options: {
-          config: 'config.rb',
-          trace: true
+    autoprefixer: {
+      options: {
+        map: true,
+        browsers: ['last 2 versions', 'ie 8', 'ie 9', '> 1%']
+      },
+      files: {
+            expand: true,
+            cwd: 'assets/css/',
+            src: [
+                '**/*.css'
+            ],
+            dest: 'assets/css',
+            ext: '.css',
+            extDot: 'last'
         }
+    },
+    css_sprite: {
+      options: {
+        'cssPath': '../../images/',
+        'processor': 'scss',
+        'orientation': 'vertical',
+        'margin': 10
+      },
+      sprite: {
+        options: {
+          'style': 'scss/theme/_sprite.scss'
+        },
+        src: ['images/icon/*'],
+        dest: 'images/sprite-portfolio',
       }
     },
     browserSync: {
       dev: {
         bsFiles: {
           src : [
-            'css/*.css',
-            '*.html'
+          'assets/css/*.css',
+          '*.phtml',
+          '*.html',
+          'js/*.js'
           ]
         },
         options: {
           watchTask: true,
-          proxy: "local.portfolio.com.br"
+          proxy: 'local.portfolio.com.br',
+          open: false
         }
       }
     }
   });
 
   // load tasks
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('css-sprite');
+  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browser-sync');
 
-  grunt.registerTask('w', ['browserSync', 'watch', 'jshint']);
+  grunt.registerTask('default', ['browserSync', 'watch']);
 };

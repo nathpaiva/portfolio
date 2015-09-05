@@ -12,13 +12,14 @@
 
 %flex
 {
-    @include display-flex;
-    @include flex-direction(row);
+    display: flex;
+    flex-direction: row;
 }
 
 %disabled
 {
     opacity: .5;
+
     filter: alpha(opacity=50);
 }
 
@@ -63,7 +64,7 @@
     width: 960px;
     margin: auto;
     padding: 0 10px;
-    @include bp(max-width, $bp-large)
+    @media (max-width: $bp-large)
     {
         width: 100%;
         padding: 0 20px;
@@ -76,32 +77,24 @@ body
 {
     font-family: $font;
     font-size: 62.5%;
-    // background-color: red;
     // background-image: url('../images/bg-header.jpg');
     // background-repeat: no-repeat;
     // background-position: center top;
 
-
     color: $txt-color;
-
+    // background-color: red;
 }
 
 a
 {
-    -webkit-transition: all .2s linear;
-       -moz-transition: all .2s linear;
-         -o-transition: all .2s linear;
-            transition: all .2s linear;
+    transition: all .2s linear;
     text-decoration: none;
     word-wrap: break-word;
 
     color: $a-color;
     &:hover
     {
-        -webkit-transition: all .2s linear;
-           -moz-transition: all .2s linear;
-             -o-transition: all .2s linear;
-                transition: all .2s linear;
+        transition: all .2s linear;
         text-decoration: none;
         word-wrap: break-word;
 
